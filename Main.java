@@ -27,9 +27,33 @@ public class Main {
 
 
     public static TreeSet<Integer> jugadoresActivos(int[] servidorA,
-                                                     int[] servidorB,
-                                                     int[] baneados) {
-        // TODO: implemente este método
-        return new TreeSet<>();
+                                                    int[] servidorB,
+                                                    int[] baneados) {
+        TreeSet<Integer> activos = new TreeSet<>();
+        HashSet<Integer> banSet = new HashSet<>();
+        {
+
+
+            for (int b : baneados) {
+                banSet.add(b);
+            }
+
+
+            for (int a : servidorA) {
+                if (!banSet.contains(a)) {
+                    activos.add(a);
+                }
+            }
+
+
+            for (int b : servidorB) {
+                if (!banSet.contains(b)) {
+                    activos.add(b);
+                }
+            }
+
+            return activos;
+        }
+
     }
 }
